@@ -2,7 +2,7 @@ import importlib
 
 from DayFactory import DayFactory
 
-NB_MAX_DAY = 7
+NB_MAX_DAY = 24
 LAST_DAY = True
 SECOND_STAR = True
 
