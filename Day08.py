@@ -2,7 +2,6 @@ from enum import Enum
 
 from Day import Day
 
-
 # Day		Star	Test Type	          Result	|	Elapsed Time
 #   8		1st		Example		              21	|	  0.15ms
 #   8		1st		Problem		            1851	|	42.227ms
@@ -28,7 +27,6 @@ class Visibility:
 
 
 class Forest:
-
     def __init__(self, input_value):
         self.forest = []
         self.visibility = []
@@ -39,18 +37,22 @@ class Forest:
     def parse_forest(self, input_value):
         for row in input_value:
             self.forest.append(list(map(int, [tree for tree in row])))
-            self.visibility.append(
-                [Visibility() for _ in range(len(row))]
-            )
+            self.visibility.append([Visibility() for _ in range(len(row))])
         self.nb_row = len(self.forest)
         self.nb_col = len(self.forest[0])
 
-    def check_directional_visibility(self, directions, direction, x, y, xp, yp, size_check):
-        if directions[direction] and size_check and self.forest[x][y] > self.forest[xp][yp]:
+    def check_directional_visibility(
+        self, directions, direction, x, y, xp, yp, size_check
+    ):
+        if (
+            directions[direction]
+            and size_check
+            and self.forest[x][y] > self.forest[xp][yp]
+        ):
             self.check_visibility(xp, yp)
             if (
-                    self.visibility[xp][yp].status == Visibility.VISIBLE
-                    and self.visibility[xp][yp].visible[direction]
+                self.visibility[xp][yp].status == Visibility.VISIBLE
+                and self.visibility[xp][yp].visible[direction]
             ):
                 self.visibility[x][y].status = Visibility.VISIBLE
                 self.visibility[x][y].visible[direction] = True
@@ -71,10 +73,18 @@ class Forest:
         i = 1
         directions = {direction: True for direction in Direction}
         while any(directions.values()):
-            self.check_directional_visibility(directions, Direction.UP, x, y, x - i, y, 0 <= x - i)
-            self.check_directional_visibility(directions, Direction.DOWN, x, y, x + i, y, x + i < self.nb_row)
-            self.check_directional_visibility(directions, Direction.LEFT, x, y, x, y - i, 0 <= y - i)
-            self.check_directional_visibility(directions, Direction.RIGHT, x, y, x, y + i, y + i < self.nb_col)
+            self.check_directional_visibility(
+                directions, Direction.UP, x, y, x - i, y, 0 <= x - i
+            )
+            self.check_directional_visibility(
+                directions, Direction.DOWN, x, y, x + i, y, x + i < self.nb_row
+            )
+            self.check_directional_visibility(
+                directions, Direction.LEFT, x, y, x, y - i, 0 <= y - i
+            )
+            self.check_directional_visibility(
+                directions, Direction.RIGHT, x, y, x, y + i, y + i < self.nb_col
+            )
             i += 1
         if self.visibility[x][y].status == Visibility.NON_VISITED:
             self.visibility[x][y].status = Visibility.NON_VISIBLE

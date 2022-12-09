@@ -7,7 +7,6 @@ from InputParser import InputParser
 
 
 class Day(ABC):
-
     def __init__(self, day_inst):
         self.day_value = int(day_inst.__class__.__name__[-2:])
 
@@ -35,7 +34,9 @@ class Day(ABC):
 
     def process_star(self, star):
         start_test_time = time.time_ns()
-        test_case = InputParser(self.day_value, DayUtils.TestEnum.TEST.value, star).get_iterator()
+        test_case = InputParser(
+            self.day_value, DayUtils.TestEnum.TEST.value, star
+        ).get_iterator()
         test_result = self.solution_star(star, test_case)
         end_test_time = (time.time_ns() - start_test_time) / 1000000
         print(

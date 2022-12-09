@@ -2,7 +2,6 @@ import curses
 
 from Day import Day
 
-
 # Day		Star	Test Type	          Result	|	Elapsed Time
 #   9		1st		Example		              13	|	 0.127ms
 #   9		1st		Problem		            6498	|	14.689ms
@@ -61,7 +60,11 @@ class Rope:
         self.visited_place.add(self.rope[-1].get_pos())
 
     def move_rope(self, input_value):
-        list(map(lambda x: [self.move_head(x[0]) for _ in range(int(x[2:]))], input_value))
+        list(
+            map(
+                lambda x: [self.move_head(x[0]) for _ in range(int(x[2:]))], input_value
+            )
+        )
 
     def draw_char(self, x, y, char, color=0):
         xp = x + curses.COLS // 2 - 60
