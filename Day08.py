@@ -135,8 +135,8 @@ class Day08(Day):
                 max_view_dist = max(current_view_dist, max_view_dist)
         return max_view_dist
 
-    def solution_first_star(self, input_value):
+    def solution_first_star(self, input_value, input_type):
         return self.solve(input_value)
 
-    def solution_second_star(self, input_value):
+    def solution_second_star(self, input_value, input_type):
         return self.solve_2(input_value)

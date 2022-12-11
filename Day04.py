@@ -32,8 +32,8 @@ class Day04(Day):
                 nb += 1
         return nb
 
-    def solution_first_star(self, input_value):
+    def solution_first_star(self, input_value, input_type):
         return self.find_overlap(input_value)
 
-    def solution_second_star(self, input_value):
+    def solution_second_star(self, input_value, input_type):
         return self.find_overlap_2(input_value)

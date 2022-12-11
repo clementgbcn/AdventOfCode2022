@@ -49,8 +49,8 @@ class Day01(Day):
         top_list.add(current_calorie)
         return top_list.result()
 
-    def solution_first_star(self, input_value):
+    def solution_first_star(self, input_value, input_type):
         return self.count_increment(input_value)
 
-    def solution_second_star(self, input_value):
+    def solution_second_star(self, input_value, input_type):
         return self.count_increment_2(input_value)

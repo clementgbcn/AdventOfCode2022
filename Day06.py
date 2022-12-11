@@ -45,8 +45,8 @@ class Day06(Day):
             [Day06.get_non_repeated_chain(signal, 14) for signal in signals]
         )
 
-    def solution_first_star(self, input_value):
+    def solution_first_star(self, input_value, input_type):
         return self.decrypt_signal(input_value)
 
-    def solution_second_star(self, input_value):
+    def solution_second_star(self, input_value, input_type):
         return self.decrypt_signal_2(input_value)

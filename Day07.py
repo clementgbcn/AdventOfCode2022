@@ -107,8 +107,8 @@ class Day07(Day):
         graph = Graph(input_value)
         return graph.find_smallest_folder_to_delete()
 
-    def solution_first_star(self, input_value):
+    def solution_first_star(self, input_value, input_type):
         return self.solve(input_value)
 
-    def solution_second_star(self, input_value):
+    def solution_second_star(self, input_value, input_type):
         return self.solve_2(input_value)

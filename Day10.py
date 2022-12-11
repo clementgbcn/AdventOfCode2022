@@ -61,8 +61,8 @@ class Day10(Day):
         text = pytesseract.image_to_string(path_to_image)
         return text
 
-    def solution_first_star(self, input_value):
+    def solution_first_star(self, input_value, input_type):
         return self.solve(input_value)
 
-    def solution_second_star(self, input_value):
+    def solution_second_star(self, input_value, input_type):
         return self.solve_2(input_value)

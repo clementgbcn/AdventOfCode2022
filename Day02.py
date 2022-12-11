@@ -72,8 +72,8 @@ class Day02(Day):
             rps.round_outcome(r[0], r[2])
         return rps.total_point
 
-    def solution_first_star(self, input_value):
+    def solution_first_star(self, input_value, input_type):
         return self.play_game(input_value)
 
-    def solution_second_star(self, input_value):
+    def solution_second_star(self, input_value, input_type):
         return self.play_game_2(input_value)

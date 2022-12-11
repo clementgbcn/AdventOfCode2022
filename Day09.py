@@ -103,8 +103,8 @@ class Day09(Day):
         rope.move_rope(input_value)
         return len(rope.visited_place)
 
-    def solution_first_star(self, input_value):
+    def solution_first_star(self, input_value, input_type):
         return self.solve(input_value)
 
-    def solution_second_star(self, input_value):
+    def solution_second_star(self, input_value, input_type):
         return self.solve_2(input_value)
