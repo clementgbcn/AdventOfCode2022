@@ -3,19 +3,41 @@ import bisect
 from Day import Day
 
 # Day             Star    Test Type                 Result        |       Elapsed Time
-#  13             1st             Example                       13        |        0.213ms
-#  13             1st             Problem                     5330        |        9.269ms
-#  13             2nd             Example                      140        |        0.232ms
-#  13             2nd             Problem                    27648        |       13.021ms
-#
+#  13             1st             Example                        8        |        0.105ms
+#  13             1st             Problem                     5330        |        3.385ms
+#  13             2nd             Example                      180        |        0.144ms
+#  13             2nd             Problem                    27648        |        6.624ms
 
 
 class Packet:
     def __init__(self, input_str):
-        self.data = eval(input_str)
+        self.data = self.parse_string(input_str)
 
     def __lt__(self, other):
         return self.compare_pair(self.data, other.data)
+
+    @staticmethod
+    def parse_string(input_str):
+        stack = []
+        current_list = []
+        current_number = ""
+        for i in input_str[1:-1]:
+            if i == "[":
+                stack.append(current_list)
+                current_list = []
+            elif i == "]":
+                if current_number != "":
+                    current_list.append(int(current_number))
+                    current_number = ""
+                previous = stack.pop()
+                previous.append(current_list)
+                current_list = previous
+            elif ord("0") <= ord(i) <= ord("9"):
+                current_number += i
+            elif current_number != "":
+                current_list.append(int(current_number))
+                current_number = ""
+        return current_list
 
     @staticmethod
     def compare_pair(left, right):
