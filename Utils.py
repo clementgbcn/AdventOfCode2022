@@ -3,7 +3,7 @@ import re
 
 from Day import Day
 
-INT_PATTERN = re.compile(r"\d+")
+INT_PATTERN = re.compile(r"-?\d+")
 
 
 def extract_int(sentence):

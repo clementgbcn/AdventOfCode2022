@@ -1,5 +1,3 @@
-import functools
-
 from Day import Day
 
 
